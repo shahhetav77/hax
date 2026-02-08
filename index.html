@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DA-IICT Retro Login</title>
+    <title>DA-IICT Retro Login - Merged</title>
     <style>
         body {
             margin: 0;
@@ -14,7 +14,7 @@
 
         .container {
             width: 100%;
-            min-width: 800px; /* Ensure layout doesn't break on very small screens */
+            min-width: 800px;
         }
 
         .top-spacer { 
@@ -23,12 +23,10 @@
             background-color: #dcebf9; 
         }
 
-        /* --- 1. THE STRIPED BACKGROUND AREA --- */
+        /* --- STRIPED BACKGROUND --- */
         .main-row {
-            position: relative;
             width: 100%;
-            height: 300px; /* Increased height for bigger images */
-            /* Retro scan-line background */
+            height: 300px; 
             background: repeating-linear-gradient(
                 to bottom,
                 #dbeaff,
@@ -36,54 +34,65 @@
                 #9dbce8 3px,
                 #9dbce8 4px
             );
+            
+            /* Align to left */
             display: flex;
-            align-items: flex-end; /* Aligns content to bottom */
+            align-items: center; 
+            justify-content: flex-start;
+            padding-left: 0; 
         }
 
-        /* --- 2. THE LOGIN BOX (Left) --- */
+        /* --- LOGIN BOX --- */
         .login-wrapper {
-            width: 260px;
-            /* This margin pushes the box down so stripes show above it */
-            margin-top: 60px; 
-            z-index: 5;
-            position: relative;
+            margin-left: 0;
+            z-index: 20; /* Higher z-index to sit on top of the border seam */
         }
 
         .login-box {
-            background-color: #0073b6; /* Cerulean Blue */
-            border-top-right-radius: 35px; /* Rounded corner */
-            padding: 20px 20px 15px 20px;
-            border-right: 2px solid white;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            /* SMALLER WIDTH */
+            width: 160px;
             
-            /* IMPORTANT: No fixed height. Let content define height */
+            background-color: #0073b6; /* The Blue Color */
+            
+            /* SHARP BORDERS */
+            border-radius: 0; 
+            
+            /* Add a border of the same color to match the image box thickness visually */
+            border: 2px solid #0073b6;
+            
+            padding: 15px 10px;
+            
             display: flex;
             flex-direction: column;
+            
+            /* Remove right border or margin so it merges */
+            margin-right: -2px; 
         }
 
         .login-form label {
             display: block;
-            color: #00ffff; /* Cyan */
-            font-size: 15px;
+            color: #00ffff;
+            font-size: 13px;
             font-weight: bold;
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 0px #000000; /* Retro shadow */
+            margin-bottom: 3px;
+            text-shadow: 2px 2px 0px #000000;
             font-family: sans-serif;
         }
 
         .login-form input[type="text"], 
         .login-form input[type="password"] {
             width: 100%;
-            box-sizing: border-box; /* Ensures padding doesn't widen the box */
-            padding: 4px;
-            margin-bottom: 15px;
-            border: 2px solid #000;
-            height: 26px;
-            box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
-            font-size: 14px;
+            box-sizing: border-box;
+            padding: 2px;
+            margin-bottom: 10px;
+            border: 2px solid #000; 
+            border-radius: 0; /* Sharp inputs too */
+            height: 22px;
+            font-size: 12px;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.4);
         }
 
-        /* Button Styling */
+        /* --- BUTTON STYLING --- */
         .login-container-btn {
             display: flex;
             justify-content: flex-end;
@@ -92,88 +101,81 @@
 
         .login-btn {
             border: none;
-            /* Glossy Gradient */
-            background: linear-gradient(to bottom, #8faad9, #6a8ecf, #557cb8);
-            border-radius: 20px;
-            padding: 5px 6px 5px 16px;
+            background: linear-gradient(to bottom, #99bbff, #5577cc);
+            border-radius: 50px; 
+            padding: 3px 5px 3px 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-            transition: all 0.1s;
-        }
-
-        .login-btn:active {
-            transform: translateY(1px);
-            box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+            gap: 5px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
         }
 
         .btn-text {
             color: white;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 10px;
             font-family: Arial, sans-serif;
-            text-shadow: 1px 1px 1px #333;
-            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px #333;
+            text-transform: uppercase;
         }
 
         .btn-icon {
-            background: white;
+            background: #f0f0f0;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
+            width: 16px;
+            height: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .btn-arrow {
             width: 0; 
             height: 0; 
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            border-left: 8px solid #486ca8;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-left: 5px solid #4466aa;
             margin-left: 2px;
         }
 
-        /* --- 3. THE IMAGE WINDOW (Right) --- */
+        /* --- IMAGE SHOWCASE --- */
         .image-showcase {
-            /* Absolute positioning guarantees it appears where we want */
-            position: absolute;
-            left: 280px; /* Starts right after the login box */
-            top: 25px;   /* Distance from top of the blue stripes area */
+            position: relative;
+            
+            /* BLUE BORDER to match Login Box */
+            border: 2px solid #0073b6; 
             
             background-color: white;
-            padding: 5px; /* Thicker white frame */
-            border: 2px solid white;
+            padding: 2px;
+            
             display: flex;
             align-items: center;
-            box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+            
+            /* No shadow or same shadow to unify them */
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
             z-index: 10;
         }
 
         .image-showcase img {
-            height: 220px; /* Increased Height */
+            height: 220px;
             object-fit: cover;
             display: block;
         }
 
-        /* Individual widths */
         .img-logo { width: 220px; }
         .img-campus { width: 280px; }
         .img-class { width: 180px; }
 
-        /* --- FOOTER --- */
         .footer-text {
             text-align: center;
             font-size: 11px;
             color: #003399;
-            margin-top: 30px;
+            margin-top: 20px;
             line-height: 1.5;
         }
-
     </style>
 </head>
 <body>
@@ -185,7 +187,7 @@
             
             <div class="login-wrapper">
                 <div class="login-box">
-                    <div class="login-form">
+                    <form class="login-form" onsubmit="event.preventDefault();">
                         <label for="user">Username</label>
                         <input type="text" id="user" name="user">
                         
@@ -200,7 +202,7 @@
                                 </div>
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 
